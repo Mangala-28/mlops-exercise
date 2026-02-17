@@ -22,9 +22,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install flask
 
-    - name: Run Flask App
-      run: |
-        export FLASK_APP=exercise.py
-        python exercise.py &
-        sleep 5
-        curl http://127.0.0.1:5000/
+   - name: Test Flask Endpoint
+  run: |
+    python exercise.py &
+    sleep 5
+    RESPONSE=$(curl -s http://127.0.0.1:5000/)
+    echo "Response is: $RESPONSE"
